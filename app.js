@@ -91,7 +91,7 @@ function register(_path, _data, _interface) {
 }
 
 function get(_path) {
-    var redisSet = _path + "_set"
+    var redisSet = "_set" + _path
     return new Promise((resolve, reject) => {
         client.srandmember(redisSet, (_e, _d) => {
             if (_e || !_d) {
