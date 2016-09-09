@@ -10,7 +10,7 @@ puttu.register(master, {
 }, null).then(
     () => {
         console.log('Registered self')
-        puttu.get(master).then(
+        puttu.get("set_" + master).then(
             d => console.log(d),
             e => console.log(e)
         );
