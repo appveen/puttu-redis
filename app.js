@@ -23,11 +23,10 @@ function getIPAddress(interface) {
     }
 }
 
-function connect(_host, _port) {
-    assert.notEqual(_host, undefined, 'Empty host name')
-    assert.notEqual(_port, undefined, 'Empty port number')
-
-    client = redis.createClient(_port, _host)
+function connect() {
+    if (process.env.REDIS_CON)
+        client = redis.createClient(process.env.REDIS_CON.split(":")[1], process.env.REDIS_CON.split(":")[0])
+    else client = redis.createClient()
 
     client.on("error", function (err) {
         console.log('Redis Disconnected, stopping service')
@@ -38,14 +37,16 @@ function connect(_host, _port) {
 function addToRedis(_path, _data) {
     try {
 
-        client.ttl(_path + "_set", (e, r) => {
+        client.ttl("set_" + _path, (e, r) => {
             if (e) {
                 console.log(e);
                 process.exit(0);
             }
             if (r == -2 || r == -1) {
-                client.sadd(_path, _data);
-                client.pexpire(_path, 1000)
+                setMagicKey(_path).then(() => {
+                    client.sadd("set_" + _path , _data);
+                    client.pexpire(_path, 1000)
+                });
             }
             setTimeout(function () {
                 addToRedis(_path, _data)
@@ -84,14 +85,8 @@ function register(_path, _data, _interface) {
         if (!_path) reject('Missing config path.')
         if (!_data) reject('Missing config value')
 
-        var redisSet = _path + "_set"
-        setMagicKey(_path).then(() => {
-            var data = _data.protocol.toLowerCase() + '://' + getIPAddress(_interface) + ':' + _data.port + _data.api
-            addToRedis(redisSet, data)
-            resolve()
-        }, () => {
-            log("error")
-        })
+        var data = _data.protocol.toLowerCase() + '://' + getIPAddress(_interface) + ':' + _data.port + _data.api
+        addToRedis(_path, data)
     })
 }
 

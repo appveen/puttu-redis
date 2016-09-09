@@ -1,6 +1,6 @@
 var puttu = require('./app.js')
 
-puttu.connect('localhost', '6379')
+puttu.connect()
 
 var master = "test"
 puttu.register(master, {
