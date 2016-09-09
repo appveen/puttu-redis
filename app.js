@@ -45,7 +45,7 @@ function addToRedis(_path, _data) {
             if (r == -2 || r == -1) {
                 setMagicKey(_path).then(() => {
                     client.sadd("set_" + _path , _data);
-                    client.pexpire(_path, 1000)
+                    client.pexpire("set_" + _path , 1000)
                 });
             }
             setTimeout(function () {
