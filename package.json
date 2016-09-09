@@ -1,0 +1,29 @@
+{
+  "name": "puttu-redis",
+  "version": "1.0.0",
+  "description": "Redis based micro-service registry",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capiotsoftware/puttu-redis.git"
+  },
+  "keywords": [
+    "redis",
+    "microservice",
+    "registry",
+    "node",
+    "puttu"
+  ],
+  "author": "Jerry M.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/capiotsoftware/puttu-redis/issues"
+  },
+  "homepage": "https://github.com/capiotsoftware/puttu-redis#readme",
+  "dependencies": {
+    "redis": "^2.6.2"
+  }
+}
