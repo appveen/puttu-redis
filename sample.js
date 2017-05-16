@@ -1,13 +1,21 @@
+var redis = require("redis");
 var puttu = require('./app.js')
 
-puttu.connect()
+var client = redis.createClient();
 
-var master = "test"
+client.on("error", function (err) {
+  console.log('Redis Disconnected, stopping service')
+  process.exit(0)
+})
+
+puttu.init(client);
+
+var master = "product"
 puttu.register(master, {
     protocol: 'http',
     port: '10001',
-    api: '/brand/v1'
-}, null).then(
+    api: '/product/v1'
+}).then(
     () => {
         console.log('Registered self')
         puttu.get("set_" + master).then(

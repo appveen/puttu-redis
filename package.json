@@ -25,5 +25,9 @@
   "homepage": "https://github.com/capiotsoftware/puttu-redis#readme",
   "dependencies": {
     "redis": "^2.6.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1"
   }
 }
