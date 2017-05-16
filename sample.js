@@ -10,19 +10,20 @@ client.on("error", function (err) {
 
 puttu.init(client);
 
-var master = "product"
-puttu.register(master, {
+var serviceName = "product"
+var options = {
     protocol: 'http',
     port: '10001',
     api: '/product/v1'
-}).then(
+};
+puttu.register(serviceName, options).then(
     () => {
         console.log('Registered self')
-        puttu.get("set_" + master).then(
+        puttu.get(serviceName).then(
             d => console.log(d),
             e => console.log(e)
         );
-        puttu.getMagicKey(master).then(
+        puttu.getMagicKey(serviceName).then(
             d => console.log(d),
             e => console.log(e)
         )
