@@ -2,17 +2,7 @@
 /* global describe:false, it: false */
 var chai = require('chai');
 var expect = chai.expect;
-var redis = require("redis");
 var puttu = require('../app.js')
-
-var client = redis.createClient();
-
-client.on("error", function (err) {
-  console.log('Redis Disconnected, stopping service')
-  process.exit(0)
-})
-
-puttu.init(client);
 
 describe('Methods Sanity Check', function () {
     describe('Init', function () {
