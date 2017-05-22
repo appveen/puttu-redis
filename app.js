@@ -13,12 +13,10 @@ function addToRedis(_path, _data) {
                 console.log(_error);
                 process.exit(0);
             }
-            if (_r == -2 || _r == -1) {
-                setMagicKey(_path).then(() => {
-                    e.client.sadd("set_" + _path, _data);
-                    e.client.pexpire("set_" + _path, 2000)
-                }, () => {});
-            }
+            setMagicKey(_path).then(() => {
+                e.client.sadd("set_" + _path, _data);
+                e.client.pexpire("set_" + _path, 2000)
+            }, () => {});
             setTimeout(function () {
                 addToRedis(_path, _data)
             }, 500);
