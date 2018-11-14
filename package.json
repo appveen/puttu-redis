@@ -1,5 +1,5 @@
 {
-  "name": "puttu-redis",
+  "name": "@appveen/puttu-redis",
   "version": "1.0.0",
   "description": "Redis based micro-service registry",
   "main": "app.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/capiotsoftware/puttu-redis.git"
+    "url": "git+https://github.com/appveen/puttu-redis.git"
   },
   "keywords": [
     "redis",
@@ -17,17 +17,17 @@
     "node",
     "puttu"
   ],
-  "author": "Jerry M.",
+  "author": "Jerry M. <jerry@appveen.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/capiotsoftware/puttu-redis/issues"
+    "url": "https://github.com/appveen/puttu-redis/issues"
   },
-  "homepage": "https://github.com/capiotsoftware/puttu-redis#readme",
+  "homepage": "https://github.com/appveen/puttu-redis#readme",
   "dependencies": {
     "redis": "^2.6.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.4.1"
+    "mocha": "^5.2.0"
   }
 }

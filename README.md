@@ -1,7 +1,7 @@
 # puttu-redis
 Redis based micro-service registry
 
-![build](https://travis-ci.org/capiotsoftware/puttu-redis.svg?branch=master)
+![build](https://travis-ci.org/appveen/puttu-redis.svg?branch=master)
 
 _puttu-redis_ is a [Redis](https://redis.io) based micro-service registry. This enables services to connect and register an endpoint by specifying a *service name*. Multiple instances of the same services can register different endpoints using the same *service name*. The library also retrieves a random endpoint from the list of endpoints registered under the same service name.
 
